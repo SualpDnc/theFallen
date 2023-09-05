@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject enemy;
+    public GameObject basılabilirenemy;
     public float spawnRate = 2;
     private float timer = 0;
     public float offset = 2.66f;
@@ -34,6 +35,19 @@ public class EnemySpawner : MonoBehaviour
     {
         float leftpoint = transform.position.x - offset;
         float rightpoint = transform.position.x + offset;
-        Instantiate(enemy, new Vector3(Random.Range(leftpoint,rightpoint), transform.position.y, 0), transform.rotation);
+       
+        
+        int rastgeleSecim = Random.Range(0, 7);
+
+        if (rastgeleSecim == 0)
+        {
+            Instantiate(basılabilirenemy, new Vector3(Random.Range(leftpoint, rightpoint), transform.position.y, 0), transform.rotation);
+
+        }
+        else
+        {
+            
+            Instantiate(enemy, new Vector3(Random.Range(leftpoint, rightpoint), transform.position.y, 0), transform.rotation);
+        }
     }
 }

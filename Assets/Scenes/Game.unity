@@ -569,7 +569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2670426088950390635, guid: aa794ada862fa422eacffe8a6e904f42, type: 3}
-  spawnRate: 2
+  "bas\u0131labilirenemy": {fileID: 2670426088950390635, guid: 470a617fcaecf47bd8ae73b04a617e67, type: 3}
+  spawnRate: 0.5
   offset: 2.66
 --- !u!4 &1195025335
 Transform:
@@ -579,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195025333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.37, y: -6.61, z: -0.115423664}
+  m_LocalPosition: {x: -0, y: -6.61, z: -0.115423664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
