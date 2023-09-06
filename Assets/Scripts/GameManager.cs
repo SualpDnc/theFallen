@@ -2,23 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int playerScore;
     public Text scoreText;
-
+    public Text endscore;
+    public Text highScore;
+    public GameObject gameoverscreen;
+    private int gamescore;
     public float scoreincRate = 3;
     private float timer = 0;
+    public theFallenScript fallen;
+
 
     public void addScore()
     {
-        playerScore = playerScore + 5;
-        scoreText.text = playerScore.ToString() + "mt";
+        if (!fallen.isplayerdead)
+        {
+            playerScore = playerScore + 10;
+            scoreText.text = playerScore.ToString() + "meters";
+
+            if (gamescore > PlayerPrefs.GetInt("HighScore", 0))
+            {
+                PlayerPrefs.SetInt("HighScore", gamescore);
+                highScore.text = gamescore.ToString();
+            }
+        }
+       
+    }
+
+    public void GameOverScreenActive()
+    {
+        gameoverscreen.SetActive(true);
+        endscore.text = "Distance: " + playerScore + " meters" + "\nKilled enemy: " + fallen.killscore + "\n Game Score: " + fallen.killscore * playerScore;
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 
-
+       
 
 
 
@@ -26,8 +53,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-   
+        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        fallen = GameObject.FindGameObjectWithTag("theFallen").GetComponent<theFallenScript>();
     }
 
     // Update is called once per frame
@@ -42,5 +69,9 @@ public class GameManager : MonoBehaviour
             addScore();
             timer = 0;
         }
+
+
+        
+        gamescore = Mathf.RoundToInt(playerScore * fallen.killscore);
     }
 }
