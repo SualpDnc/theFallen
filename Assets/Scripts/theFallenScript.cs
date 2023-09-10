@@ -6,17 +6,24 @@ using UnityEngine.UI;
 public class theFallenScript : MonoBehaviour
 {
     public GameManager manager;
+   
     public GameObject blood;
     public GameObject maviefekt;
+    public GameObject angelscreen;
+    public GameObject spearthrower;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
+    private Collider2D cldr;
     private bool isMovingright;
     private bool isMovingleft;
     private float horizontalmove;
     public float killscore = 0;
     public Text killscoretext;
     public bool isplayerdead = false;
+    private bool kontrol;
     
+
+    public GameObject testobje;
     
 
 
@@ -24,8 +31,10 @@ public class theFallenScript : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+       
 
         rb = GetComponent<Rigidbody2D>();
+        cldr = GetComponent<Collider2D>();
 
         isMovingleft = false;
         isMovingright = false;
@@ -35,26 +44,26 @@ public class theFallenScript : MonoBehaviour
     public void PointerDownLeft()
     {
         isMovingleft = true;
-        transform.localScale = new Vector3(-1.88f, 2.42f, 0.3f);
+        transform.localScale = new Vector3(-0.4f, 0.4f, 0.3f);
     }
 
     public void PointerUpLeft()
     {
         isMovingleft = false;
-        transform.localScale = new Vector3(-1.88f, 2.42f, 0.3f);
+        transform.localScale = new Vector3(-0.4f, 0.4f, 0.3f);
     }
 
     public void PointerDownRight()
     {
         isMovingright = true;
-        transform.localScale = new Vector3(1.88f, 2.42f, 0.3f);
+        transform.localScale = new Vector3(0.4f, 0.4f, 0.3f);
 
     }
 
     public void PointerUpRight()
     {
         isMovingright = false;
-        transform.localScale = new Vector3(1.88f, 2.42f, 0.3f);
+        transform.localScale = new Vector3(0.4f, 0.4f, 0.3f);
     }
 
     // Update is called once per frame
@@ -62,7 +71,8 @@ public class theFallenScript : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+
+        /*if (Input.GetKey(KeyCode.LeftArrow))
         {
             isMovingleft = true;
             isMovingright = false;
@@ -77,7 +87,9 @@ public class theFallenScript : MonoBehaviour
         {
             isMovingright = false;
             isMovingleft = false;
-        }
+        }*/
+
+        
     }
 
     private void MovePlayer()
@@ -112,7 +124,6 @@ public class theFallenScript : MonoBehaviour
 
             manager.GameOverScreenActive();
             
-           
         }
 
         if (collision.gameObject.CompareTag("EzEnemy"))
@@ -123,9 +134,48 @@ public class theFallenScript : MonoBehaviour
             Destroy(collision.gameObject);
 
         }
+
+        if (collision.gameObject.CompareTag("Angel"))
+        {
+            kontrol = true;
+            
+            
+            cldr.enabled = false;
+            angelscreen.SetActive(true);
+            Invoke("AngelHelpOff", 5f);
+            if(kontrol == false)
+            {
+                Destroy(collision.gameObject);
+            }
+
+        }
+
+        if (collision.gameObject.CompareTag("SpearAmmo"))
+        {
+            Destroy(collision.gameObject);
+            spearthrower.SetActive(true);
+            Invoke("SpearThrowerOff", 5f);
+
+        }
+
+
     }
 
-   
+    void AngelHelpOff()
+    {
+        angelscreen.SetActive(false);
+        cldr.enabled = true;
+        
+        kontrol = false;
+        
+    }
+
+    void SpearThrowerOff()
+    {
+        spearthrower.SetActive(false);
+
+    }
+
 
 
 

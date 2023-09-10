@@ -8,6 +8,11 @@ TagManager:
   - EzEnemy
   - Manager
   - theFallen
+  - Angel
+  - spawner
+  - Spear
+  - SpearAmmo
+  - Monster
   layers:
   - Default
   - TransparentFX
