@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public void GameOverScreenActive()
     {
         gameoverscreen.SetActive(true);
-        endscore.text = "Distance: " + playerScore + " meters" + "\nSkulls collected: " + fallen.killscore + "\nGame Score: " + fallen.killscore * playerScore;
+        endscore.text = "Distance: " + playerScore + " meters" + "\nSkulls: " + fallen.killscore + "\n Game Score: " + fallen.killscore * playerScore;
     }
 
     public void ReturnToMenu()
