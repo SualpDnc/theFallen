@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 387826551043639621}
   - component: {fileID: -8122984267087107868}
   - component: {fileID: 8408959866701426001}
+  - component: {fileID: 5643626815347785511}
+  - component: {fileID: 616835478067189724}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -137,3 +139,38 @@ CapsuleCollider2D:
   m_Offset: {x: -0.1203869, y: -0.121664636}
   m_Size: {x: 1.5783838, y: 4.2440133}
   m_Direction: 0
+--- !u!95 &5643626815347785511
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403131120285246320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d20b2aee2f504f31a896901b2e3a06a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!111 &616835478067189724
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403131120285246320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

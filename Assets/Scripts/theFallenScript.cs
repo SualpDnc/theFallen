@@ -23,8 +23,18 @@ public class theFallenScript : MonoBehaviour
     private bool kontrol;
     
 
+<<<<<<< HEAD
+
+    [SerializeField] private AudioSource collectSoundEffect;
+    [SerializeField] private AudioSource angelSoundEffect;
+    [SerializeField] private AudioSource deathSoundEffect;
+    public AudioSource deathsoundddd;
+
+
+=======
     public GameObject testobje;
     
+>>>>>>> parent of 9b8b0c7 (ses efektleri ve düzeltmeler)
 
 
     // Start is called before the first frame update
@@ -71,8 +81,9 @@ public class theFallenScript : MonoBehaviour
     {
         MovePlayer();
 
+        rb.velocity = new Vector2(horizontalmove, rb.velocity.y);
 
-        /*if (Input.GetKey(KeyCode.LeftArrow))
+       /* if (Input.GetKey(KeyCode.LeftArrow))
         {
             isMovingleft = true;
             isMovingright = false;
@@ -89,6 +100,7 @@ public class theFallenScript : MonoBehaviour
             isMovingleft = false;
         }*/
 
+        
         
     }
 
@@ -108,16 +120,17 @@ public class theFallenScript : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(horizontalmove, rb.velocity.y);
-    }
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+<<<<<<< HEAD
+            deathsoundddd.Play();
+=======
 
+>>>>>>> parent of 9b8b0c7 (ses efektleri ve düzeltmeler)
             isplayerdead = true;
             Instantiate(blood, transform.position, Quaternion.identity);
             Destroy(gameObject);
